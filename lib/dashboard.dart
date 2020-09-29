@@ -30,6 +30,7 @@ class Dashboard extends StatelessWidget {
                     style: TextStyle(fontSize: 17.0, fontFamily: 'Raleway', color: Colors.deepPurple),
                     ),
                 onTap: () {
+                  Navigator.pop(context);
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Home()),
@@ -44,6 +45,7 @@ class Dashboard extends StatelessWidget {
                   style: TextStyle(fontSize: 17.0, fontFamily: 'Raleway', color: Colors.deepPurple),
                 ),
                 onTap: () {
+                  Navigator.pop(context);
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => NoteList()),
@@ -55,6 +57,7 @@ class Dashboard extends StatelessWidget {
                   style: TextStyle(fontSize: 17.0, fontFamily: 'Raleway', color: Colors.deepPurple),
                 ),
                 onTap: () {
+                  Navigator.pop(context);
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => TabBarDemo()),
@@ -67,7 +70,7 @@ class Dashboard extends StatelessWidget {
           ) // Populate the Drawer in the next step.
       ),
       body: Center(
-        child: Column(
+        child: ListView(
           children: [
             titleSection,
             horizontalList,
