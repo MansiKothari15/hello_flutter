@@ -54,12 +54,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Fetch Data Example',
-      /*theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),*/
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text('Fetch Data Example'),
         ),
@@ -78,7 +73,7 @@ class _MyAppState extends State<MyApp> {
             },
           ),
         ),
-      ),
+
     );
   }
 }

@@ -66,6 +66,20 @@ class Dashboard extends StatelessWidget {
                   // ...
                 },
               ),
+              ListTile(
+                title: Text('Network Call',
+                  style: TextStyle(fontSize: 17.0, fontFamily: 'Raleway', color: Colors.deepPurple),
+                ),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyApp()),
+                  );
+                  // Update the state of the app.
+                  // ...
+                },
+              ),
             ],
           ) // Populate the Drawer in the next step.
       ),
