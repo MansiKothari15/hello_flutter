@@ -4,8 +4,7 @@ import 'package:helloflutter/home.dart';
 class TabBarDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DefaultTabController(
+    return DefaultTabController(
         length: 3,
         child: Scaffold(
           appBar: AppBar(
@@ -16,17 +15,16 @@ class TabBarDemo extends StatelessWidget {
                 Tab(icon: Icon(Icons.directions_bike), text: "BIKE",),
               ],
             ),
-            title: Text('Tabs Demo'),
+            title: Text('Transport'),
           ),
           body: TabBarView(
             children: [
-              new Text("This is car Tab View"),
+              Icon(Icons.directions_car),
               Icon(Icons.directions_transit),
-              new Home(),
+              Icon(Icons.directions_bike),
             ],
           ),
         ),
-      ),
     );
   }
 }

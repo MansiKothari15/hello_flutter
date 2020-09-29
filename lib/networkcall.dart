@@ -56,9 +56,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Fetch Data Example',
-      theme: ThemeData(
+      /*theme: ThemeData(
         primarySwatch: Colors.blue,
-      ),
+      ),*/
       home: Scaffold(
         appBar: AppBar(
           title: Text('Fetch Data Example'),

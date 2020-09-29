@@ -4,12 +4,9 @@ class Home extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-        title: "Flutter Time App",
-        home: Scaffold(
+    return Scaffold(
           appBar: AppBar(
-            title: Text("Flutter Time App"),
+            title: Text("Date & Time"),
             backgroundColor: Colors.deepPurple,
           ),
           body: Material(
@@ -18,7 +15,6 @@ class Home extends StatelessWidget{
               textDirection: TextDirection.ltr,
               style: TextStyle(fontSize: 34.0, color: Colors.black),),),
           ),
-        )
     );
   }
 

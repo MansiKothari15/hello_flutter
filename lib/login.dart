@@ -6,19 +6,12 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return MaterialApp(
-      theme: ThemeData(
-          // brightness: Brightness.dark,
-          primarySwatch: Colors.blue,
-          accentColor: Colors.green),
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text("Login"),
-          backgroundColor: Colors.blue,
         ),
         body: MyHomePage(title: 'Flutter Login'),
-      ),
-    );
+      );
   }
 }
 
@@ -69,12 +62,14 @@ class _MyHomePageState extends State<MyHomePage> {
     TextStyle textStyle = Theme.of(context).textTheme.headline6;
     final emailField = TextFormField(
       validator: (value) {
+        Pattern pattern =
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+        RegExp regex = new RegExp(pattern);
         if (value.isEmpty) {
           return 'Please enter email id';
+        }else if(!regex.hasMatch(value)){
+            return 'Enter Valid Email';
         }
-        /*else if(value.contains(pattern)){
-
-        }*/
         return null;
       },
       autofocus: true,
@@ -92,6 +87,8 @@ class _MyHomePageState extends State<MyHomePage> {
       validator: (value) {
         if (value.isEmpty) {
           return 'Please enter password';
+        }else if(value.length < 8){
+          return 'Password must be of 8 characters';
         }
         return null;
       },
@@ -107,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final loginButon = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
-      color: Color(0xff01A0C7),
+      color: Colors.deepPurple,
       child: MaterialButton(
         minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),

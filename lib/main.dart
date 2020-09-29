@@ -8,7 +8,11 @@ import 'home.dart';
 
 void main() => runApp(MaterialApp(
       title: 'Title',
-      home: NoteList(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+      ),
+      home: Login(),
     ));
 
 // void main() => runApp(NoteList());

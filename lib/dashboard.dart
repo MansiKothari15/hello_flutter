@@ -2,74 +2,79 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:helloflutter/home.dart';
 import 'package:helloflutter/networkcall.dart';
+import 'package:helloflutter/note.dart';
 import 'package:helloflutter/tabs.dart';
 
-class Dashboard extends StatelessWidget{
+class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final title = 'Basic List';
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: title,
-      home: Scaffold(
-          drawer: Drawer(
-              child: ListView(
-                  padding: EdgeInsets.zero,
-                  children: <Widget>[
+    final title = 'Dashboard';
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
               DrawerHeader(
-              child: Text('Drawer Header'),
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
-          ),
-                    ListTile(
-                      title: Text('Item 1'),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Home()),
-                        );
-                        // Update the state of the app.
-                        // ...
-                        // Navigator.pop(context);
-                      },
+                child: Text('Welcome User!',
+                  style: TextStyle(fontSize: 25.0, fontFamily: 'Raleway', color: Colors.white),
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.deepPurple,
+                ),
+              ),
+              ListTile(
+                title: Text('Date & Time',
+                    style: TextStyle(fontSize: 17.0, fontFamily: 'Raleway', color: Colors.deepPurple),
                     ),
-                    ListTile(
-                      title: Text('Item 2'),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => MyApp()),
-                        );
-                      },
-                    ),
-                    ListTile(
-                      title: Text('Item 3'),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => TabBarDemo()),
-                        );
-                        // Update the state of the app.
-                        // ...
-                      },
-                    ),
-        ],
-        )// Populate the Drawer in the next step.
-          ),
-        appBar: AppBar(
-          title: Text(title),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Home()),
+                  );
+                  // Update the state of the app.
+                  // ...
+                  // Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Notes',
+                  style: TextStyle(fontSize: 17.0, fontFamily: 'Raleway', color: Colors.deepPurple),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NoteList()),
+                  );
+                },
+              ),
+              ListTile(
+                title: Text('Transport',
+                  style: TextStyle(fontSize: 17.0, fontFamily: 'Raleway', color: Colors.deepPurple),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TabBarDemo()),
+                  );
+                  // Update the state of the app.
+                  // ...
+                },
+              ),
+            ],
+          ) // Populate the Drawer in the next step.
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            titleSection,
+            horizontalList,
+            staticList,
+          ],
         ),
-        body: Center(
-          child: Column(
-                  children: [
-                    titleSection,
-                    horizontalList,
-                    staticList,
-                  ],
       ),
-      ),
-      )
     );
   }
 
@@ -140,22 +145,22 @@ class Dashboard extends StatelessWidget{
   Widget staticList = Container(
       margin: EdgeInsets.symmetric(vertical: 20.0),
       height: 200.0,
-    child: ListView(
-      children: <Widget>[
-        ListTile(
-          leading: Icon(Icons.map),
-          title: Text('Map'),
-        ),
-        ListTile(
-          leading: Icon(Icons.photo_album),
-          title: Text('Album'),
-        ),
-        ListTile(
-          leading: Icon(Icons.phone),
-          title: Text('Phone'),
-        ),
-      ],
-    )
+      child: ListView(
+        children: <Widget>[
+          ListTile(
+            leading: Icon(Icons.map),
+            title: Text('Map'),
+          ),
+          ListTile(
+            leading: Icon(Icons.photo_album),
+            title: Text('Album'),
+          ),
+          ListTile(
+            leading: Icon(Icons.phone),
+            title: Text('Phone'),
+          ),
+        ],
+      )
   );
 }
 
