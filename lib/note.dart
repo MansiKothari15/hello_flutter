@@ -74,7 +74,7 @@ class NoteListState extends State<NoteList> {
             subtitle: Text(this.noteList[position].date),
 
             trailing: GestureDetector(
-              child: Icon(Icons.delete, color: Colors.grey,),
+              child: Icon(Icons.delete_forever_outlined, color: Colors.red,),
               onTap: () {
                 _delete(context, noteList[position]);
               },

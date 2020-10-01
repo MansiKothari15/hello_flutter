@@ -15,74 +15,125 @@ class Dashboard extends StatelessWidget {
       ),
       drawer: Drawer(
           child: ListView(
-            padding: EdgeInsets.zero, 
-            children: <Widget>[
-              DrawerHeader(
-                child: Text('Welcome User!',
-                  style: TextStyle(fontSize: 25.0, fontFamily: 'Raleway', color: Colors.white),
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.deepPurple,
-                ),
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.deepPurple,
+            ),
+            child: Column(children: [
+              new Container(
+                  width: 100.0,
+                  height: 100.0,
+                  decoration: new BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: new DecorationImage(
+                          fit: BoxFit.fill,
+                          image: new NetworkImage(
+                              "https://i.imgur.com/BoN9kdC.png")
+                      )
+                  )),
+              Text(
+                'Welcome User!',
+                style: TextStyle(
+                    fontSize: 25.0, fontFamily: 'Raleway', color: Colors.white),
               ),
-              ListTile(
-                title: Text('Date & Time',
-                    style: TextStyle(fontSize: 17.0, fontFamily: 'Raleway', color: Colors.deepPurple),
-                    ),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Home()),
-                  );
-                  // Update the state of the app.
-                  // ...
-                  // Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: Text('Notes',
-                  style: TextStyle(fontSize: 17.0, fontFamily: 'Raleway', color: Colors.deepPurple),
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => NoteList()),
-                  );
-                },
-              ),
-              ListTile(
-                title: Text('Transport',
-                  style: TextStyle(fontSize: 17.0, fontFamily: 'Raleway', color: Colors.deepPurple),
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => TabBarDemo()),
-                  );
-                  // Update the state of the app.
-                  // ...
-                },
-              ),
-              ListTile(
-                title: Text('Network Call',
-                  style: TextStyle(fontSize: 17.0, fontFamily: 'Raleway', color: Colors.deepPurple),
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MyApp()),
-                  );
-                  // Update the state of the app.
-                  // ...
-                },
-              ),
-            ],
-          ) // Populate the Drawer in the next step.
-      ),
+            ]),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              backgroundColor: Colors.amber,
+              child: Icon(Icons.date_range),
+            ),
+            title: Text(
+              'Date & Time',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 17.0,
+                  fontFamily: 'Raleway',
+                  color: Colors.deepPurple),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Home()),
+              );
+              // Update the state of the app.
+              // ...
+              // Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              backgroundColor: Colors.amber,
+              child: Icon(Icons.note),
+            ),
+            title: Text(
+              'Notes',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 17.0,
+                  fontFamily: 'Raleway',
+                  color: Colors.deepPurple),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => NoteList()),
+              );
+            },
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              backgroundColor: Colors.amber,
+              child: Icon(Icons.train),
+            ),
+            title: Text(
+              'Transport',
+              style: TextStyle(
+                  fontSize: 17.0,
+                  fontFamily: 'Raleway',
+                  fontWeight: FontWeight.bold,
+                  color: Colors.deepPurple),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => TabBarDemo()),
+              );
+              // Update the state of the app.
+              // ...
+            },
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              backgroundColor: Colors.amber,
+              child: Icon(Icons.network_check),
+            ),
+            title: Text(
+              'Network Call',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 17.0,
+                  fontFamily: 'Raleway',
+                  color: Colors.deepPurple),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyApp()),
+              );
+              // Update the state of the app.
+              // ...
+            },
+          ),
+        ],
+      ) // Populate the Drawer in the next step.
+          ),
       body: Center(
         child: ListView(
           children: [
@@ -106,10 +157,11 @@ class Dashboard extends StatelessWidget {
             children: [
               /*2*/
               Container(
-                padding: const EdgeInsets.only(bottom: 8),
+                padding: const EdgeInsets.only(bottom: 5),
                 child: Text(
                   'Oeschinen Lake Campground',
                   style: TextStyle(
+                    fontSize: 17.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -137,7 +189,15 @@ class Dashboard extends StatelessWidget {
       children: <Widget>[
         Container(
           width: 160.0,
-          color: Colors.red,
+            decoration: new BoxDecoration(
+                color: Colors.red,
+                shape: BoxShape.rectangle,
+                image: new DecorationImage(
+                    fit: BoxFit.fill,
+                    image: new NetworkImage(
+                        "https://i.imgur.com/BoN9kdC.png")
+                )
+            )
         ),
         Container(
           width: 160.0,
@@ -165,20 +225,19 @@ class Dashboard extends StatelessWidget {
       child: ListView(
         children: <Widget>[
           ListTile(
-            leading: Icon(Icons.map),
-            title: Text('Map'),
+            leading: Icon(Icons.map, color: Colors.deepOrange),
+            title: Text('Map',style: TextStyle(color: Colors.deepOrange, fontFamily: "Raleway", fontSize: 20.0),),
           ),
           ListTile(
-            leading: Icon(Icons.photo_album),
-            title: Text('Album'),
+            leading: Icon(Icons.photo_album, color: Colors.deepOrange),
+            title: Text('Album', style: TextStyle(color: Colors.deepOrange, fontFamily: "Raleway", fontSize: 20.0),),
           ),
           ListTile(
-            leading: Icon(Icons.phone),
-            title: Text('Phone'),
+            leading: Icon(Icons.phone,color: Colors.deepOrange,),
+            title: Text('Phone', style: TextStyle(color: Colors.deepOrange, fontFamily: "Raleway", fontSize: 20.0),),
           ),
         ],
-      )
-  );
+      ));
 }
 
 class FavoriteWidget extends StatefulWidget {
@@ -201,7 +260,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
             padding: EdgeInsets.all(0),
             alignment: Alignment.centerRight,
             icon: (_isFavorited ? Icon(Icons.star) : Icon(Icons.star_border)),
-            color: Colors.green[500],
+            color: Colors.deepOrange[500],
             onPressed: _toggleFavorite,
           ),
         ),
