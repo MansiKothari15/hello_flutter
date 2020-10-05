@@ -60,29 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     TextStyle textStyle = Theme.of(context).textTheme.headline6;
-    final emailField = TextFormField(
-      validator: (value) {
-        Pattern pattern =
-            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-        RegExp regex = new RegExp(pattern);
-        if (value.isEmpty) {
-          return 'Please enter email id';
-        }else if(!regex.hasMatch(value)){
-            return 'Enter Valid Email';
-        }
-        return null;
-      },
-      autofocus: true,
-      controller: myController,
-      obscureText: false,
-      style: textStyle,
-      decoration: InputDecoration(
-          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Email",
-          labelText: "Email",
-          // labelStyle: textStyle,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0))),
-    );
+    final emailField = InputField(myController: myController, textStyle: textStyle);
     final passwordField = TextFormField(
       validator: (value) {
         if (value.isEmpty) {
@@ -164,6 +142,44 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       // ),
+    );
+  }
+}
+
+class InputField extends StatelessWidget {
+  const InputField({
+    Key key,
+    @required this.myController,
+    @required this.textStyle,
+  }) : super(key: key);
+
+  final TextEditingController myController;
+  final TextStyle textStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      validator: (value) {
+        Pattern pattern =
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+        RegExp regex = new RegExp(pattern);
+        if (value.isEmpty) {
+          return 'Please enter email id';
+        }else if(!regex.hasMatch(value)){
+            return 'Enter Valid Email';
+        }
+        return null;
+      },
+      autofocus: true,
+      controller: myController,
+      obscureText: false,
+      style: textStyle,
+      decoration: InputDecoration(
+          contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          hintText: "Email",
+          labelText: "Email",
+          // labelStyle: textStyle,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0))),
     );
   }
 }

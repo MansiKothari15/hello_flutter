@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:helloflutter/home.dart';
 import 'package:helloflutter/networkcall.dart';
 import 'package:helloflutter/note.dart';
+import 'package:helloflutter/photos.dart';
 import 'package:helloflutter/tabs.dart';
 
 class Dashboard extends StatelessWidget {
@@ -126,6 +127,29 @@ class Dashboard extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => MyApp()),
+              );
+              // Update the state of the app.
+              // ...
+            },
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              backgroundColor: Colors.amber,
+              child: Icon(Icons.photo),
+            ),
+            title: Text(
+              'Take Picture',
+              style: TextStyle(
+                  fontSize: 17.0,
+                  fontFamily: 'Raleway',
+                  fontWeight: FontWeight.bold,
+                  color: Colors.deepPurple),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => TakePictureScreen(camera: null)),
               );
               // Update the state of the app.
               // ...

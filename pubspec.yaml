@@ -20,7 +20,9 @@ dependencies:
   flutter:
     sdk: flutter
   sqflite: any
-  path_provider: any
+  camera:
+  path_provider:
+  path:
   intl:
   http: 0.12.2
 
