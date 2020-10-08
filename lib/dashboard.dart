@@ -18,7 +18,15 @@ class Dashboard extends StatelessWidget {
           child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
+          UserAccountsDrawerHeader(
+            accountEmail: Text("mansi@gmail.com"),
+            accountName: Text("Mansi Kothari"),
+            currentAccountPicture: CircleAvatar(
+              backgroundImage: NetworkImage("https://i.imgur.com/BoN9kdC.png"),
+              backgroundColor: Colors.deepOrange,
+            ),
+          ),
+          /*DrawerHeader(
             decoration: BoxDecoration(
               color: Colors.deepPurple,
             ),
@@ -40,7 +48,7 @@ class Dashboard extends StatelessWidget {
                     fontSize: 25.0, fontFamily: 'Raleway', color: Colors.white),
               ),
             ]),
-          ),
+          ),*/
           ListTile(
             leading: CircleAvatar(
               backgroundColor: Colors.amber,
