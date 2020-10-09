@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:helloflutter/dashboard.dart';
+import 'package:helloflutter/utils/constants.dart';
 
 class Login extends StatelessWidget {
   @override
@@ -98,6 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
               context,
               MaterialPageRoute(builder: (context) => Dashboard()),
             );*/
+            Constants.prefs.setBool("LoggedIn", true);
             Navigator.of(context).push(_createRoute());
           }
         },

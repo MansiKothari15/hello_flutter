@@ -5,6 +5,8 @@ import 'package:helloflutter/networkcall.dart';
 import 'package:helloflutter/note.dart';
 import 'package:helloflutter/photos.dart';
 import 'package:helloflutter/tabs.dart';
+import 'package:helloflutter/utils/constants.dart';
+import 'package:path/path.dart';
 
 class Dashboard extends StatelessWidget {
   @override
@@ -13,6 +15,41 @@ class Dashboard extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.exit_to_app),
+              onPressed: () {
+                Constants.prefs.setBool("LoggedIn", false);
+                // Navigator.pop(context);
+                // set up the AlertDialog
+                AlertDialog alert = AlertDialog(
+                  title: Text("Log out"),
+                  content: Text("Are you sure you want to log out?"),
+                  actions: <Widget>[
+                    TextButton(
+                      child: Text('No'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    TextButton(
+                      child: Text('Yes'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                );
+
+                // show the dialog
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return alert;
+                  },
+                );
+              })
+        ],
       ),
       drawer: Drawer(
           child: ListView(
@@ -157,7 +194,8 @@ class Dashboard extends StatelessWidget {
               Navigator.pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => TakePictureScreen(camera: null)),
+                MaterialPageRoute(
+                    builder: (context) => TakePictureScreen(camera: null)),
               );
               // Update the state of the app.
               // ...
@@ -220,17 +258,14 @@ class Dashboard extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       children: <Widget>[
         Container(
-          width: 160.0,
+            width: 160.0,
             decoration: new BoxDecoration(
                 color: Colors.red,
                 shape: BoxShape.rectangle,
                 image: new DecorationImage(
                     fit: BoxFit.fill,
-                    image: new NetworkImage(
-                        "https://i.imgur.com/BoN9kdC.png")
-                )
-            )
-        ),
+                    image:
+                        new NetworkImage("https://i.imgur.com/BoN9kdC.png")))),
         Container(
           width: 160.0,
           color: Colors.blue,
@@ -258,15 +293,36 @@ class Dashboard extends StatelessWidget {
         children: <Widget>[
           ListTile(
             leading: Icon(Icons.map, color: Colors.deepOrange),
-            title: Text('Map',style: TextStyle(color: Colors.deepOrange, fontFamily: "Raleway", fontSize: 20.0),),
+            title: Text(
+              'Map',
+              style: TextStyle(
+                  color: Colors.deepOrange,
+                  fontFamily: "Raleway",
+                  fontSize: 20.0),
+            ),
           ),
           ListTile(
             leading: Icon(Icons.photo_album, color: Colors.deepOrange),
-            title: Text('Album', style: TextStyle(color: Colors.deepOrange, fontFamily: "Raleway", fontSize: 20.0),),
+            title: Text(
+              'Album',
+              style: TextStyle(
+                  color: Colors.deepOrange,
+                  fontFamily: "Raleway",
+                  fontSize: 20.0),
+            ),
           ),
           ListTile(
-            leading: Icon(Icons.phone,color: Colors.deepOrange,),
-            title: Text('Phone', style: TextStyle(color: Colors.deepOrange, fontFamily: "Raleway", fontSize: 20.0),),
+            leading: Icon(
+              Icons.phone,
+              color: Colors.deepOrange,
+            ),
+            title: Text(
+              'Phone',
+              style: TextStyle(
+                  color: Colors.deepOrange,
+                  fontFamily: "Raleway",
+                  fontSize: 20.0),
+            ),
           ),
         ],
       ));

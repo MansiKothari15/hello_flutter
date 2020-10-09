@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:helloflutter/city.dart';
 import 'package:helloflutter/dashboard.dart';
 import 'package:helloflutter/login.dart';
-import 'package:helloflutter/note.dart';
-import 'package:helloflutter/note_detail.dart';
-import 'home.dart';
+import 'package:helloflutter/utils/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() => runApp(MaterialApp(
-      title: 'Title',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-      ),
-      home: Login(),
-    ));
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Constants.prefs = await SharedPreferences.getInstance();
+  runApp(InitialPage());
+}
 
-// void main() => runApp(NoteList());
+class InitialPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(primarySwatch: Colors.deepPurple),
+        home: Constants.prefs.getBool("LoggedIn") == true? Dashboard():Login()
+    );
+  }
+}
